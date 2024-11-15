@@ -8,21 +8,21 @@ To run this project, you will need to have [Node.js](https://nodejs.org/) instal
 
 ## Getting Started
 
-## Build and Run
+### Build and Run
 
-### 1. Install dependencies
+#### 1. Install dependencies
 Navigate to the source folder and perform the following command to install required dependencies:
 ```bash
 npm install
 ```
 
-### 2. Start the development server
+#### 2. Start the development server
 Now to run the development server perform the following command:
 ```bash
 npm run dev
 ```
  
-### 3. Access the application
+#### 3. Access the application
 To view the web page navigate to the following link in your browser:
 ```bash
 http://localhost:3000
