@@ -1,9 +1,46 @@
+"use client";
+
 import { Table, TableBody, TableCell, TableHeader, TableHead, TableRow } from "./components/table";
 import Link from "next/link";
 import Image from "next/image";
 import hero_concert from "../assets/hero_concert.jpg"
+import { useEffect, useState } from "react";
+
+type Song = {
+  id: string;
+  Title: string;
+  Artist: string;
+  Album: string;
+  Genre: string;
+}
 
 export default function Home() {
+
+  const [songs, setSongs] = useState<Song[]>([]);
+  const [filter, setFilter] = useState<string>("");
+
+  useEffect(() => {
+    const fetchSongs = async () => {
+      try {
+        const response = await fetch('https://56s163a2v2.execute-api.us-west-2.amazonaws.com/items');
+        const data = await response.json();
+        setSongs(data);
+      } catch (error) {
+        console.error("Error fetching songs:", error);
+      }
+
+    };
+
+    fetchSongs();
+  }, []);
+
+  const filteredSongs = songs.filter((song) =>
+    song.Title.toLowerCase().includes(filter.toLowerCase()) ||
+    song.Artist.toLowerCase().includes(filter.toLowerCase()) ||
+    song.Album.toLowerCase().includes(filter.toLowerCase()) ||
+    song.Genre.toLowerCase().includes(filter.toLowerCase())
+  );
+
   return (
     <main className="bg-black text-white min-h-screen">
       {/* Hero section */}
@@ -34,6 +71,8 @@ export default function Home() {
           <input
             type="text"
             placeholder="Search your library..."
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
             className="p-2 rounded bg-white text-black border-2 focus:outline-none focus:border-orange-500"
           />
           <Link href="/addSongs">
@@ -44,29 +83,33 @@ export default function Home() {
         </div>
 
         {/* Table for library */}
-        <div className="overflow-x-auto font-space-grotesk">
+        <div className="overflow-x-auto font-space-grotesk text-white">
           <Table>
             <TableHeader>
               <TableRow>
                 <TableHead>Title</TableHead>
                 <TableHead>Artist</TableHead>
                 <TableHead>Album</TableHead>
-                <TableHead>Duration</TableHead>
+                <TableHead>Genre</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              <TableRow>
-                <TableCell>Example Song 1</TableCell>
-                <TableCell>Example Artist 1</TableCell>
-                <TableCell>Example Album 1</TableCell>
-                <TableCell>3:45</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Example Song 2</TableCell>
-                <TableCell>Example Artist 2</TableCell>
-                <TableCell>Example Album 2</TableCell>
-                <TableCell>4:20</TableCell>
-              </TableRow>
+              {filteredSongs.length > 0 ? (
+                filteredSongs.map((song) => (
+                  <TableRow key={song.id}>
+                    <TableCell>{song.Title}</TableCell>
+                    <TableCell>{song.Artist}</TableCell>
+                    <TableCell>{song.Album}</TableCell>
+                    <TableCell>{song.Genre}</TableCell>
+                  </TableRow>
+                ))
+              ) : (
+                <TableRow>
+                  <TableCell colSpan={4} className="text-center text-xl">
+                    No songs found.
+                  </TableCell>
+                </TableRow>
+              )}
             </TableBody>
           </Table>
         </div>
