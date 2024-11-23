@@ -1,5 +1,11 @@
 export default function addSongs() {
   return (
-    <h1>Add a Song</h1>
+    <main className="bg-black">
+      <section>
+        <div>
+          <h1 className="text-white text-center text-4xl">Add a song</h1>
+        </div>
+      </section>
+    </main>
   )
 }

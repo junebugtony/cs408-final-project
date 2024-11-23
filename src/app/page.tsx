@@ -5,7 +5,7 @@ import hero_concert from "../assets/hero_concert.jpg"
 
 export default function Home() {
   return (
-    <main className="bg-zinc-800 text-white min-h-screen">
+    <main className="bg-black text-white min-h-screen">
       {/* Hero section */}
       <section className="relative w-full h-[30vh]">
         <div className="absolute inset-0">
@@ -16,7 +16,6 @@ export default function Home() {
             style={{
               objectFit: "cover",
               opacity: 0.6,
-              filter: "blur(1px)",
             }}
             className="absolute top-0 left-0 w-full h-full"
           />
@@ -24,18 +23,18 @@ export default function Home() {
         </div>
         <div className="absolute inset-0 bg-black opacity-40"></div>
         <div className="absolute inset-0 flex justify-center items-center text-center">
-          <h3 className="text-4xl font-bold">View and Manage your Library</h3>
+          <h3 className="text-4xl font-bold font-lacquer">View and Manage your Library</h3>
         </div>
       </section>
 
       {/* Library section */}
       <section className="space-y-4 p-8">
         {/* Filters or actions */}
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center font-space-grotesk">
           <input
             type="text"
             placeholder="Search your library..."
-            className="p-2 rounded bg-gray-800 text-white"
+            className="p-2 rounded bg-white text-black border-2 focus:outline-none focus:border-orange-500"
           />
           <Link href="/addSongs">
             <button className="px-4 py-2 bg-white text-black rounded hover:bg-orange-500">
@@ -45,7 +44,7 @@ export default function Home() {
         </div>
 
         {/* Table for library */}
-        <div className="overflow-x-auto">
+        <div className="overflow-x-auto font-space-grotesk">
           <Table>
             <TableHeader>
               <TableRow>

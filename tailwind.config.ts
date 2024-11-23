@@ -17,8 +17,12 @@ export default {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
-  	}
+  		},
+			fontFamily: {
+				lacquer: ['var(--font-lacquer)', 'sans serif'],
+				'space-grotesk': ['var(--font-space-grotesk)', 'sans-serif'],
+			},
+  	},
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;

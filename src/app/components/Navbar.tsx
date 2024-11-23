@@ -33,7 +33,7 @@ export default function Header() {
   }
 
   return (
-    <header className="flex items-center justify-between sticky top-0 z-50 p-4 bg-black shadow-md">
+    <header className="flex items-center justify-between sticky top-0 z-50 p-4 bg-black shadow-md font-space-grotesk">
 
       <div>
         <Link href="/">
@@ -48,7 +48,9 @@ export default function Header() {
       </div>
       {/* Mobile menu toggle button */}
       <div className="lg:hidden flex items-center">
-        <button onClick={toggleMenu} aria-label="Toggle Menu">
+        <button onClick={toggleMenu}
+          aria-label="Toggle Menu"
+          className='focus:outline-none'>
           {menuIcon}
         </button>
       </div>
@@ -56,7 +58,7 @@ export default function Header() {
       {/* Navigation links */}
       <nav
         className={`${menuClass} flex-col lg:flex-row lg:flex space-y-4 lg:space-y-0 lg:space-x-6 ml-auto absolute lg:static top-16 right-4 lg:top-auto
-         bg-black lg:bg-transparent p-4 lg:p-0 shadow-md lg:shadow-none rounded-lg lg:rounded-none`}
+          bg-black lg:bg-transparent p-4 lg:p-0 shadow-md lg:shadow-none rounded-lg lg:rounded-none transition-all duration-300 ease-in-out`}
       >
         <Link href="/" onClick={handleLinkClick}>
           <button className="bg-transparent text-white text-lg font-bold hover:text-orange-500 hover:scale-110 duration-300 px-4 py-2">Your Library</button>
