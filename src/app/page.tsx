@@ -12,10 +12,15 @@ export default function Home() {
           <Image
             src={hero_concert}
             alt="Concert Image"
-            layout="fill"
-            objectFit="cover"
-            className="opacity-60 blur-[1px]"
+            fill
+            style={{
+              objectFit: "cover",
+              opacity: 0.6,
+              filter: "blur(1px)",
+            }}
+            className="absolute top-0 left-0 w-full h-full"
           />
+
         </div>
         <div className="absolute inset-0 bg-black opacity-40"></div>
         <div className="absolute inset-0 flex justify-center items-center text-center">
