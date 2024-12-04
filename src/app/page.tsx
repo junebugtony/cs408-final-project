@@ -4,6 +4,7 @@ import { Table, TableBody, TableCell, TableHeader, TableHead, TableRow } from ".
 import Image from "next/image";
 import hero_concert from "../assets/hero_concert.jpg";
 import { useEffect, useState } from "react";
+import React from 'react';
 
 type Song = {
   id: string;
