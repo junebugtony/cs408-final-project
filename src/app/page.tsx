@@ -209,7 +209,8 @@ export default function Home() {
             </TableHeader>
             <TableBody className="text-lg">
               {filteredSongs.length > 0 ? (
-                filteredSongs.map((song) => (
+                filteredSongs.sort((a,b) => a.Title.localeCompare(b.Title))
+                .map((song) => (
                   <TableRow key={song.id}>
                     <TableCell className="truncate">{song.Title}</TableCell>
                     <TableCell className="truncate">{song.Artist}</TableCell>
